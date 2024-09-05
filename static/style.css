@@ -1,0 +1,63 @@
+ul li {
+    list-style: none;
+}
+
+ul{
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+a:hover {
+    color: rgb(0, 0, 0);
+    background-color: white;
+    border-radius: 10px;
+}
+
+.myimg {
+    height:320px;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.uploadcontainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    padding-block: 10px;
+}
+
+.image-container {
+    width: 100%;
+
+}
+
+.fullimage {
+    width: 84vw;
+
+}
+
+.loginform {
+    width: 80%;
+    border-radius: 20px;
+    padding: 50px;
+}
+
+@media (max-width: 425px) {
+    .loginform {
+      padding: 25px;
+      width: 90%;
+      font-size: 15px;
+    }
+}

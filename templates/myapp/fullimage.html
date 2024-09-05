@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!-- SHOW FULL IMAGE -->
+
+{% block fullimage %}
+
+    <div class="container d-flex justify-content-center align-items-center my-4 py-2 pb-4 flex-column bg-secondary">
+        <h2 class="text-center text-white">{{data.title | capfirst}}</h2><p class="text-white">{{data.date}}</p>
+        <img class="fullimage" src="{{data.image.url}}" alt="">
+    </div>
+
+{% endblock %}

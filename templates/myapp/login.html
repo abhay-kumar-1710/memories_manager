@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!-- LOGIN FORM -->
+
+{% block loginform %}
+<div class="container loginform text-white mt-5 bg-secondary">
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" class="btn btn-primary" value="Log In">
+    </form>   
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!-- BLOCK FOR UPLOAD OPTION -->
+
+{% block upload %}
+    
+<div class="container bg-secondary">
+    <h3 class="p-3 text-center text-white fs-2">Uploader Option</h3>
+    <div class="uploadcontainer text-white">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Upload" class="btn btn-success my-2">
+        </form>
+    </div>
+</div>
+
+{% endblock  %}
+
+<!-- BLOCK FOR GALLERY -->
+
+{% block gallery %}
+
+<div class="container bg-secondary mt-3 p-3">
+    <h3 class="p-3 text-center text-white fs-2">Gallery</h3>
+    <div class="gallery">
+        {% if data %}
+        {% for dt in data %}
+        <div class="card border border-5" style="width: 20rem;">
+            <img src="{{dt.image.url}}"
+                class="card-img-top myimg" alt="Sorry No Data To Show">
+            <div class="card-body bg-secondary d-flex flex-column gap-2">
+                <h5 class="card-title mx-2 fs-2 text-white text-center">{{dt.title | capfirst}}</h5>
+                <p class="badge text-bg-warning m-1">On : {{dt.date}}</p>
+                <a href="{% url 'showfullimage' dt.id %}" class="btn btn-primary">Show Full Image</a>
+                <a href="{{dt.image.url}}" download="mypics" class="btn btn-success">Download</a>
+                {% if request.user.is_superuser %}
+                <a href="{% url 'delete' dt.id %}" class="btn btn-danger">Delete This Memory</a>
+                {% else %}
+                <a href="{% url 'delete' dt.id %}" class="btn btn-danger disabled">Delete This Memory</a>
+                {% endif %}
+
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="container text-center alert fs-5 alert-danger" role="alert">
+            <h4>No Data To Show!</h4>
+        </div>
+        {% endif %}
+    </div>
+</div>
+    
+{% endblock %}
